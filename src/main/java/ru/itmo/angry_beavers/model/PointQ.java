@@ -2,20 +2,20 @@ package ru.itmo.angry_beavers.model;
 
 import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Table(name = "points")
 @Entity
 @NoArgsConstructor
 @Getter
 @Setter
+@ToString
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class PointQ {
 
+
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private long id;
 
     @Column(nullable = false)
@@ -28,7 +28,7 @@ public class PointQ {
     private Double r;
 
     @Column(nullable = false)
-    private boolean InArea;
+    private boolean inArea;
 
     @Column(nullable = false)
     private String queryTime;
