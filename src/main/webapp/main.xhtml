@@ -18,6 +18,10 @@
         </ui:define>
 
         <ui:define name="content">
+<!--            <f:metadata>-->
+<!--                <f:event type="preRenderView" listener="#{pointsBean.init}"/>-->
+<!--            </f:metadata>-->
+
             <div class="container my-4">
                 <div class="row w-100">
                     <div class="form border border-light rounded col-sm text-center p-4 mx-5">
@@ -27,49 +31,49 @@
 
                                 <div class="form-check form-check-inline mt-2 h5">
                                     <div class="pretty p-round p-tada">
-                                        <h:selectBooleanCheckbox id="x1" name="x1" value="#{pointsBean.x1}"/>
+                                        <h:selectBooleanCheckbox id="x1" name="x1" value="#{pointsBean.x[0]}"/>
                                         <div class="state p-success">
                                             <h:outputLabel for="x1">-5</h:outputLabel>
                                         </div>
                                     </div>
 
                                     <div class="pretty p-round p-tada">
-                                        <h:selectBooleanCheckbox id="x2" name="x2" value="#{pointsBean.x2}"/>
+                                        <h:selectBooleanCheckbox id="x2" name="x2" value="#{pointsBean.x[1]}"/>
                                         <div class="state p-success">
                                             <h:outputLabel for="x2">-4</h:outputLabel>
                                         </div>
                                     </div>
 
                                     <div class="pretty p-round p-tada">
-                                        <h:selectBooleanCheckbox id="x3" name="x3" value="#{pointsBean.x3}"/>
+                                        <h:selectBooleanCheckbox id="x3" name="x3" value="#{pointsBean.x[2]}"/>
                                         <div class="state p-success">
                                             <h:outputLabel for="x3">-3</h:outputLabel>
                                         </div>
                                     </div>
 
                                     <div class="pretty p-round p-tada">
-                                        <h:selectBooleanCheckbox id="x4" name="x4" value="#{pointsBean.x4}"/>
+                                        <h:selectBooleanCheckbox id="x4" name="x4" value="#{pointsBean.x[3]}"/>
                                         <div class="state p-success">
                                             <h:outputLabel for="x4">-2</h:outputLabel>
                                         </div>
                                     </div>
 
                                     <div class="pretty p-round p-tada">
-                                        <h:selectBooleanCheckbox id="x5" name="x5" value="#{pointsBean.x5}"/>
+                                        <h:selectBooleanCheckbox id="x5" name="x5" value="#{pointsBean.x[4]}"/>
                                         <div class="state p-success">
                                             <h:outputLabel for="x5">-1</h:outputLabel>
                                         </div>
                                     </div>
 
                                     <div class="pretty p-round p-tada">
-                                        <h:selectBooleanCheckbox id="x6" name="x6" value="#{pointsBean.x6}"/>
+                                        <h:selectBooleanCheckbox id="x6" name="x6" value="#{pointsBean.x[5]}"/>
                                         <div class="state p-success">
                                             <h:outputLabel for="x6">0</h:outputLabel>
                                         </div>
                                     </div>
 
                                     <div class="pretty p-round p-tada">
-                                        <h:selectBooleanCheckbox id="x7" name="x7" value="#{pointsBean.x7}"/>
+                                        <h:selectBooleanCheckbox id="x7" name="x7" value="#{pointsBean.x[6]}"/>
                                         <div class="state p-success">
                                             <h:outputLabel for="x7">1</h:outputLabel>
                                         </div>
@@ -82,7 +86,7 @@
                                 <div class="h5">Y value:</div>
                                 <div class="md-form my-3 h5 mx-5">
                                     <h:inputText id="y" name="y" a:placeholder="Value in [-3..3]"
-                                                 styleClass="form-control">
+                                                 styleClass="form-control" value="#{pointsBean.y}">
                                         <f:validateDoubleRange minimum="-3" maximum="3" />
                                     </h:inputText>
                                 </div>
@@ -94,35 +98,35 @@
                                 <div class="form-check form-check-inline my-2 h5">
 
                                     <div class="pretty p-round p-jelly">
-                                        <h:selectBooleanCheckbox id="r1" name="r1" styleClass="r-checkbox" value="#{pointsBean.r1}"/>
+                                        <h:selectBooleanCheckbox id="r1" name="r1" styleClass="r-checkbox" value="#{pointsBean.r[0]}"/>
                                         <div class="state p-info">
                                             <h:outputLabel for="r1">1</h:outputLabel>
                                         </div>
                                     </div>
 
                                     <div class="pretty p-round p-jelly">
-                                        <h:selectBooleanCheckbox id="r2" name="r2" styleClass="r-checkbox" value="#{pointsBean.r2}"/>
+                                        <h:selectBooleanCheckbox id="r2" name="r2" styleClass="r-checkbox" value="#{pointsBean.r[1]}"/>
                                         <div class="state p-info">
                                             <h:outputLabel for="r2">2</h:outputLabel>
                                         </div>
                                     </div>
 
                                     <div class="pretty p-round p-jelly">
-                                        <h:selectBooleanCheckbox id="r3" name="r3" styleClass="r-checkbox" value="#{pointsBean.r3}"/>
+                                        <h:selectBooleanCheckbox id="r3" name="r3" styleClass="r-checkbox" value="#{pointsBean.r[2]}"/>
                                         <div class="state p-info">
                                             <h:outputLabel for="r3">3</h:outputLabel>
                                         </div>
                                     </div>
 
                                     <div class="pretty p-round p-jelly">
-                                        <h:selectBooleanCheckbox id="r4" name="r4" styleClass="r-checkbox" value="#{pointsBean.r4}"/>
+                                        <h:selectBooleanCheckbox id="r4" name="r4" styleClass="r-checkbox" value="#{pointsBean.r[3]}"/>
                                         <div class="state p-info">
                                             <h:outputLabel for="r4">4</h:outputLabel>
                                         </div>
                                     </div>
 
                                     <div class="pretty p-round p-jelly">
-                                        <h:selectBooleanCheckbox id="r5" name="r5" styleClass="r-checkbox" value="#{pointsBean.r5}"/>
+                                        <h:selectBooleanCheckbox id="r5" name="r5" styleClass="r-checkbox" value="#{pointsBean.r[4]}"/>
                                         <div class="state p-info">
                                             <h:outputLabel for="r5">5</h:outputLabel>
                                         </div>
@@ -133,7 +137,8 @@
 
                             <div class="control-buttons mt-3 row">
                                 <div class="my-3 col-sm">
-                                    <h:commandButton styleClass="btn btn-primary btn-lg" value="Submit" type="submit">
+                                    <h:commandButton styleClass="btn btn-primary btn-lg" value="Submit" type="submit"
+                                    action="#{pointsBean.AddPointsFromFields}">
                                         <f:ajax execute="@form"/>
                                     </h:commandButton>
                                 </div>

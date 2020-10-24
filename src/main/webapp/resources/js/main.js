@@ -58,7 +58,26 @@ function getRValue() {
     return rValue;
 }
 
+function clickPlotHandler(e) {
+    const offset = $(this).offset();
+    const x = e.pageX - offset.left;
+    const y = e.pageY - offset.top;
+    const rValue = getRValue();
+
+    if(rValue!==null) {
+        const xValue = fromSvgToRX(x, rValue);
+        const yValue = fromSvgToRY(y, rValue);
+        // todo message about required R
+        // todo something to send fields
+    }
+}
+
+
+
+
 drawPointsFromTable();
+
+$(".graphics svg").click(clickPlotHandler);
 
 $(".r-checkbox").click(function () {
     $(".r-checkbox-selected")
