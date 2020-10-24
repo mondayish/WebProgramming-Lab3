@@ -1,0 +1,70 @@
+.header{
+    color: white;
+    font-family: monospace;
+    font-size: 1.4em;
+}
+
+.left-header{
+    float: left;
+    width: 33.33%;
+    text-align: left;
+    margin-left: 2%;
+    margin-top: 10px;
+}
+
+.center-header {
+    text-align: center;
+    display: inline-block;
+    margin: 0 auto;
+    width: 33.33%;
+}
+
+.right-header {
+    width: 33.33%;
+    float: right;
+    text-align: right;
+    margin-right: 3%;
+    margin-top: -40px;
+    vertical-align: center;
+}
+
+.round{
+    border-radius: 25px;
+}
+
+.github{
+    transition: 1s;
+}
+
+.github:hover{
+    transform: scale(1.3);
+}
+
+.current-time{
+    width: 300px;
+    margin: 10% auto 1%;
+}
+
+.date{
+    text-align: center;
+    font-size: 2.5em;
+    color: white;
+    margin-top: 20px;
+}
+
+.link-button {
+    background: #00008b;
+    padding: 8px;
+    font-size: 1.2em;
+    border: 2px solid white;
+    border-radius: 5px;
+    width: 180px;
+    margin: 1% auto;
+    text-align: center;
+}
+
+.link-button a, .link-button a:hover, .link-button a:active{
+    color: white;
+    text-decoration: none;
+}
+

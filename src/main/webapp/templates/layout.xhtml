@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+    <title><ui:insert name="title"/></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pretty-checkbox@3.0/dist/pretty-checkbox.min.css"/>
+    <h:outputStylesheet name="main.css" library="css"/>
+    <h:outputScript library="primefaces" name="jquery/jquery.js" target="head"/>
+</h:head>
+
+<h:body styleClass="bg-dark">
+    <div class="header">
+        <ui:insert name="header"/>
+    </div>
+
+    <div class="content text-light">
+        <ui:insert name="content"/>
+    </div>
+
+    <ui:insert name="scripts"/>
+</h:body>
+</html>

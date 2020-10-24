@@ -1,0 +1,10 @@
+#digital-clock{
+    font-family:Tahoma, sans-serif;
+    font-size:20px;
+    font-weight:bold;
+    color:#0000cc;
+}
+
+#analog-clock{
+    width: 400px;
+}

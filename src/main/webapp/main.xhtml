@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://java.sun.com/jsf/core">
+<h:body>
+    <ui:composition template="templates/layout.xhtml">
+
+        <ui:define name="title">Main page</ui:define>
+
+        <ui:define name="header">
+            <ui:include src="templates/header.xhtml"/>
+        </ui:define>
+
+        <ui:define name="content">
+            <div class="container my-4">
+                <div class="row w-100">
+                    <div class="form border border-light rounded col-sm text-center p-4">
+                        <h:form>
+                            <div class="x-value mb-3">
+                                <div class="h5">X value:</div>
+
+                                <div class="form-check form-check-inline mt-2">
+                                    <div class="pretty p-round p-tada">
+                                        <h:selectBooleanCheckbox id="x1" name="x1"/>
+                                        <div class="state p-success">
+                                            <h:outputLabel for="x1">-5</h:outputLabel>
+                                        </div>
+                                    </div>
+
+                                    <div class="pretty p-round p-tada">
+                                        <h:selectBooleanCheckbox id="x2" name="x2"/>
+                                        <div class="state p-success">
+                                            <h:outputLabel for="x2">-4</h:outputLabel>
+                                        </div>
+                                    </div>
+
+                                    <div class="pretty p-round p-tada">
+                                        <h:selectBooleanCheckbox id="x3" name="x3"/>
+                                        <div class="state p-success">
+                                            <h:outputLabel for="x3">-3</h:outputLabel>
+                                        </div>
+                                    </div>
+
+                                    <div class="pretty p-round p-tada">
+                                        <h:selectBooleanCheckbox id="x4" name="x4"/>
+                                        <div class="state p-success">
+                                            <h:outputLabel for="x4">-2</h:outputLabel>
+                                        </div>
+                                    </div>
+
+                                    <div class="pretty p-round p-tada">
+                                        <h:selectBooleanCheckbox id="x5" name="x5"/>
+                                        <div class="state p-success">
+                                            <h:outputLabel for="x5">-1</h:outputLabel>
+                                        </div>
+                                    </div>
+
+                                    <div class="pretty p-round p-tada">
+                                        <h:selectBooleanCheckbox id="x6" name="x6"/>
+                                        <div class="state p-success">
+                                            <h:outputLabel for="x6">0</h:outputLabel>
+                                        </div>
+                                    </div>
+
+                                    <div class="pretty p-round p-tada">
+                                        <h:selectBooleanCheckbox id="x7" name="x7"/>
+                                        <div class="state p-success">
+                                            <h:outputLabel for="x7">1</h:outputLabel>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="y-value">
+                                <div class="h5">Y value:</div>
+                                <div>
+                                    <div class="md-form">
+                                        <h:inputText id="y" name="y" a:placeholder="Value in [-3..3]"
+                                                     styleClass="form-control"/>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="r-value">
+                                <div class="h5">R value:</div>
+
+                                <div class="form-check form-check-inline mt-2">
+
+                                    <div class="pretty p-round p-jelly">
+                                        <h:selectBooleanCheckbox id="r1" name="r1"/>
+                                        <div class="state p-info">
+                                            <h:outputLabel for="r1">1</h:outputLabel>
+                                        </div>
+                                    </div>
+
+                                    <div class="pretty p-round p-jelly">
+                                        <h:selectBooleanCheckbox id="r2" name="r2"/>
+                                        <div class="state p-info">
+                                            <h:outputLabel for="r2">2</h:outputLabel>
+                                        </div>
+                                    </div>
+
+                                    <div class="pretty p-round p-jelly">
+                                        <h:selectBooleanCheckbox id="r3" name="r3"/>
+                                        <div class="state p-info">
+                                            <h:outputLabel for="r3">3</h:outputLabel>
+                                        </div>
+                                    </div>
+
+                                    <div class="pretty p-round p-jelly">
+                                        <h:selectBooleanCheckbox id="r4" name="r4"/>
+                                        <div class="state p-info">
+                                            <h:outputLabel for="r4">4</h:outputLabel>
+                                        </div>
+                                    </div>
+
+                                    <div class="pretty p-round p-jelly">
+                                        <h:selectBooleanCheckbox id="r5" name="r5"/>
+                                        <div class="state p-info">
+                                            <h:outputLabel for="r5">5</h:outputLabel>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="control-buttons">
+                                <h:commandButton value="Submit" type="submit">
+                                    <f:ajax execute="@form"/>
+                                </h:commandButton>
+                            </div>
+                        </h:form>
+                    </div>
+
+                    <div class="graphics border border-light rounded col-sm text-center">
+                        <ui:include src="templates/graphics.html"/>
+                    </div>
+                </div>
+            </div>
+
+            <div class="link-button">
+                <a href="index.xhtml" style="text-decoration: none">Go to start page</a>
+            </div>
+        </ui:define>
+
+        <ui:define name="scripts">
+
+        </ui:define>
+
+    </ui:composition>
+</h:body>
+
+</html>
