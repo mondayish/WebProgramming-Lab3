@@ -10,7 +10,6 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
-import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -19,11 +18,14 @@ import java.util.List;
 public class PointsBean implements Serializable {
 
     @Getter
-    private boolean x1,x2,x3,x4,x5,x6,x7;
+    // -5 -4 -3 -2 -1 0 1
+    private boolean[] x = new boolean[7];
 
     private DBStorage dbStorage;
+
     @Getter
-    private boolean r1,r2,r3,r4,r5;
+    // 1 2 3 4 5
+    private boolean[] r  = new boolean[5];
 
 
     public void init(){
@@ -31,27 +33,13 @@ public class PointsBean implements Serializable {
         dbStorage = facesContext.getApplication()
                         .evaluateExpressionGet(facesContext, "#{dao}", DBStorage.class);
         allPoints = dbStorage.getAllPoints();
-        currentPoint = new PointQ();
-
-        if (allPoints.size() > 0) {
-            currentPoint.setX(null);
-            currentPoint.setY(null);
-            currentPoint.setR(allPoints.get(allPoints.size()-1).getR());
-        } else {
-            currentPoint.setX(null);
-            currentPoint.setY(null);
-            currentPoint.setR(5.0);
-        }
     }
-
 
     @Getter
     private String y;
-    @Getter
-    private PointQ currentPoint;
+
     @Getter
     private List<PointQ> allPoints;
-
 
     public void clearTable(){
         for(PointQ p : dbStorage.getAllPoints()){
@@ -59,28 +47,26 @@ public class PointsBean implements Serializable {
         }
     }
 
-    public void addPointFromFields() {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss dd.MM.yyyy");
-        currentPoint.setQueryTime(dateFormat
-                .format(new Date(System.currentTimeMillis())));
-        System.out.println(currentPoint.getX());
-        System.out.println(currentPoint.getY());
-        System.out.println(currentPoint.getR());
-        System.out.println(InAreaChecker
-                .isInArea(currentPoint.getX(),
-                        currentPoint.getY(),
-                        currentPoint.getR()));
-        currentPoint.setInArea(InAreaChecker
-                .isInArea(currentPoint.getX(),
-                        currentPoint.getY(),
-                        currentPoint.getR()));
-        allPoints.add(currentPoint);
+    public void AddPointsFromFields() {
+        for (int i = 0; i< x.length; i++){
+            if(!x[i]) continue;
 
-        dbStorage.addPoint(currentPoint);
+            for(int j = 0; j< r.length; j++){
+                if(!r[j]) continue;
 
-        currentPoint = new PointQ();
-        currentPoint.setX(null);
-        currentPoint.setY(null);
-        currentPoint.setR(allPoints.get(allPoints.size()-1).getR());
+                PointQ currentPoint = new PointQ();
+                SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss dd.MM.yyyy");
+                currentPoint.setQueryTime(dateFormat
+                        .format(new Date(System.currentTimeMillis())));
+                currentPoint.setInArea(InAreaChecker
+                        .isInArea(currentPoint.getX(),
+                                currentPoint.getY(),
+                                currentPoint.getR()));
+                currentPoint.setX(i-5.0);
+                currentPoint.setR(j+1.0);
+                allPoints.add(currentPoint);
+                dbStorage.addPoint(currentPoint);
+            }
+        }
     }
 }
