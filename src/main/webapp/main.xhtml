@@ -20,12 +20,12 @@
         <ui:define name="content">
             <div class="container my-4">
                 <div class="row w-100">
-                    <div class="form border border-light rounded col-sm text-center p-4">
+                    <div class="form border border-light rounded col-sm text-center p-4 mx-5">
                         <h:form>
                             <div class="x-value mb-3">
                                 <div class="h5">X value:</div>
 
-                                <div class="form-check form-check-inline mt-2">
+                                <div class="form-check form-check-inline mt-2 h5">
                                     <div class="pretty p-round p-tada">
                                         <h:selectBooleanCheckbox id="x1" name="x1"/>
                                         <div class="state p-success">
@@ -80,18 +80,16 @@
 
                             <div class="y-value">
                                 <div class="h5">Y value:</div>
-                                <div>
-                                    <div class="md-form">
-                                        <h:inputText id="y" name="y" a:placeholder="Value in [-3..3]"
-                                                     styleClass="form-control"/>
-                                    </div>
+                                <div class="md-form my-3 h5 mx-5">
+                                    <h:inputText id="y" name="y" a:placeholder="Value in [-3..3]"
+                                                 styleClass="form-control"/>
                                 </div>
                             </div>
 
                             <div class="r-value">
                                 <div class="h5">R value:</div>
 
-                                <div class="form-check form-check-inline mt-2">
+                                <div class="form-check form-check-inline my-2 h5">
 
                                     <div class="pretty p-round p-jelly">
                                         <h:selectBooleanCheckbox id="r1" name="r1"/>
@@ -131,22 +129,38 @@
                                 </div>
                             </div>
 
-                            <div class="control-buttons">
-                                <h:commandButton value="Submit" type="submit">
-                                    <f:ajax execute="@form"/>
-                                </h:commandButton>
+                            <div class="control-buttons mt-3 row">
+                                <div class="my-3 col-sm">
+                                    <h:commandButton styleClass="btn btn-primary btn-lg" value="Submit" type="submit">
+                                        <f:ajax execute="@form"/>
+                                    </h:commandButton>
+                                </div>
+
+                                <div class="my-3 col-sm">
+                                    <h:commandButton styleClass="btn btn-primary btn-lg" value="Clear form"
+                                                     type="button">
+                                        <f:ajax execute="@form"/>
+                                    </h:commandButton>
+                                </div>
+
+                                <div class="my-3 col-sm">
+                                    <h:commandButton styleClass="btn btn-primary btn-lg" value="Clear table"
+                                                     type="button">
+                                        <f:ajax execute="@form"/>
+                                    </h:commandButton>
+                                </div>
                             </div>
                         </h:form>
                     </div>
 
-                    <div class="graphics border border-light rounded col-sm text-center">
+                    <div class="graphics border border-light rounded col-sm text-center p-5">
                         <ui:include src="templates/graphics.html"/>
                     </div>
                 </div>
             </div>
 
             <div class="link-button">
-                <a href="index.xhtml" style="text-decoration: none">Go to start page</a>
+                <a href="index.xhtml">Go to start page</a>
             </div>
         </ui:define>
 
