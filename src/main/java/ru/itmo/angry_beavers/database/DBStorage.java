@@ -6,9 +6,13 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 import ru.itmo.angry_beavers.model.PointQ;
 
+import javax.faces.bean.ApplicationScoped;
+import javax.faces.bean.ManagedBean;
 import java.util.List;
 import java.util.function.Consumer;
 
+@ManagedBean(name = "dao")
+@ApplicationScoped
 public class DBStorage implements PointsRepository {
 
 
@@ -16,6 +20,7 @@ public class DBStorage implements PointsRepository {
 
     public DBStorage() {
         SshConnection connection = new SshConnection();
+        connection.getUrl();
         Configuration configuration = new Configuration().configure();
         configuration.addAnnotatedClass(PointQ.class);
         ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
@@ -40,7 +45,12 @@ public class DBStorage implements PointsRepository {
 
     @Override
     public List<PointQ> getAllPoints() {
-        return null;
+        Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+        List<PointQ> res = session.createQuery("from PointQ").list();
+        transaction.commit();
+        session.close();
+        return res;
     }
 
     private void openTransactionFor(Consumer<Session> action) {
