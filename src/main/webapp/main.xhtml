@@ -90,7 +90,7 @@
                                     <h:inputText id="y" name="y" a:placeholder="Value in [-3..3]"
                                                  styleClass="form-control y" value="#{pointsBean.y}"
                                                  validatorMessage="Y must be number between -3 and 3 inclusive"
-                                                 required="true" requiredMessage="Y is required">
+                                                 required="true" requiredMessage="Y is required" maxlength="17">
                                         <f:validateDoubleRange minimum="-3" maximum="3"/>
                                     </h:inputText>
                                     <h:message for="y" style="color: red"/>
@@ -172,11 +172,11 @@
                             </div>
                         </h:form>
 
-                        <h:form id="hidden-form" styleClass="d-none">
-                            <h:inputText id="x-hidden" value="#{pointsBean.xx}"/>
-                            <h:inputText id="y-hidden" value="#{pointsBean.yy}"/>
-                            <h:inputText id="r-hidden" value="#{pointsBean.rr}"/>
-                            <h:commandButton type="submit" action="#{pointsBean.addPointSuper}"/>
+                        <h:form styleClass="d-none hidden-form">
+                            <h:inputText styleClass="x-hidden" value="#{pointsBean.xx}"/>
+                            <h:inputText styleClass="y-hidden" value="#{pointsBean.yy}"/>
+                            <h:inputText styleClass="r-hidden" value="#{pointsBean.rr}"/>
+                            <h:commandButton type="submit" styleClass="hidden-submit-btn" action="#{pointsBean.addPointSuper}"/>
                         </h:form>
                     </div>
 

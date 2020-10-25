@@ -11,12 +11,12 @@ function fromTableToSvgY(y) {
     return CANVAS_HEIGHT / 2 - y / getRValue() * CANVAS_R_VALUE;
 }
 
-function fromSvgToRX(x, r) {
-    return r * (x - CANVAS_WIDTH / 2) / CANVAS_R_VALUE;
+function fromSvgToRX(x) {
+    return getRValue() * (x - CANVAS_WIDTH / 2) / CANVAS_R_VALUE;
 }
 
-function fromSvgToRY(y, r) {
-    return r * (CANVAS_HEIGHT / 2 - y) / CANVAS_R_VALUE;
+function fromSvgToRY(y) {
+    return getRValue() * (CANVAS_HEIGHT / 2 - y) / CANVAS_R_VALUE;
 }
 
 function checkResult(x, y, r) {
@@ -60,16 +60,23 @@ function clickPlotHandler(e) {
     const offset = $(this).offset();
     const x = e.pageX - offset.left;
     const y = e.pageY - offset.top;
-    const rValue = getRValue();
+    if (checkOneRequiredR()) {
+        const xValue = fromSvgToRX(x);
+        const yValue = fromSvgToRY(y);
+        const rValue = getRValue();
 
-    if (rValue !== null) {
-        const xValue = fromSvgToRX(x, rValue);
-        const yValue = fromSvgToRY(y, rValue);
+        console.log(xValue);
+        console.log(yValue);
+        console.log(rValue);
+
+        $(".x-hidden").val(xValue);
+        $(".y-hidden").val(yValue);
+        $(".r-hidden").val(rValue);
+        $(".hidden-submit-btn").click();
+
         // todo message about required R
         // todo something to send fields
-        // todo validate x and r
         // todo hidden form
-
     }
 }
 
