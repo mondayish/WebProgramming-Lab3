@@ -31,6 +31,11 @@ function drawPointsFromTable() {
         const point = $(this);
         const x = parseFloat(point.find(">:first-child").text());
         const y = parseFloat(point.find(">:nth-child(2)").text());
+        // first empty row - bug in h:dataTable
+        if(isNaN(x) || isNaN(y)){
+            return;
+        }
+
         const color = checkResult(x, y, getRValue()) ? 'green' : 'red';
 
         const plot = $(".graphics svg");
@@ -73,17 +78,6 @@ function clickPlotHandler(e) {
         $(".y-hidden").val(yValue);
         $(".r-hidden").val(rValue);
         $(".hidden-submit-btn").click();
-
-        // todo message about required R
-        // todo something to send fields
-        // todo hidden form
-    }
-}
-
-function checkEmptyRow() {
-    const firstRow = $("tbody tr").first();
-    if ($("tbody tr").first().html() === "<td></td><td></td><td></td><td></td><td></td>") {
-        firstRow.remove();
     }
 }
 
@@ -118,7 +112,6 @@ function checkOneRequiredR() {
 }
 
 clearForm();
-checkEmptyRow();
 drawPointsFromTable();
 
 $(".data-form").submit(function (e) {
@@ -126,6 +119,8 @@ $(".data-form").submit(function (e) {
         e.preventDefault();
     }
 });
+
+$(".clear-table-btn").on('click', deleteAllPointsFromPlot);
 
 $(".clear-form-btn").on('click', clearForm);
 

@@ -63,6 +63,7 @@ public class PointsBean implements Serializable {
         currentPoint.setX(x);
         currentPoint.setR(r);
         currentPoint.setY(y);
+        currentPoint.setInArea(InAreaChecker.isInArea(x, y, r));
         allPoints.add(currentPoint);
         dbStorage.addPoint(currentPoint);
     }

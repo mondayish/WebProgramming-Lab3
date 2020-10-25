@@ -31,49 +31,56 @@
 
                                 <div class="form-check form-check-inline mt-2 h5">
                                     <div class="pretty p-round p-tada">
-                                        <h:selectBooleanCheckbox styleClass="x-checkbox" id="x1" name="x1" value="#{pointsBean.x[0]}"/>
+                                        <h:selectBooleanCheckbox styleClass="x-checkbox" id="x1" name="x1"
+                                                                 value="#{pointsBean.x[0]}"/>
                                         <div class="state p-success">
                                             <h:outputLabel for="x1">-5</h:outputLabel>
                                         </div>
                                     </div>
 
                                     <div class="pretty p-round p-tada">
-                                        <h:selectBooleanCheckbox styleClass="x-checkbox" id="x2" name="x2" value="#{pointsBean.x[1]}"/>
+                                        <h:selectBooleanCheckbox styleClass="x-checkbox" id="x2" name="x2"
+                                                                 value="#{pointsBean.x[1]}"/>
                                         <div class="state p-success">
                                             <h:outputLabel for="x2">-4</h:outputLabel>
                                         </div>
                                     </div>
 
                                     <div class="pretty p-round p-tada">
-                                        <h:selectBooleanCheckbox styleClass="x-checkbox" id="x3" name="x3" value="#{pointsBean.x[2]}"/>
+                                        <h:selectBooleanCheckbox styleClass="x-checkbox" id="x3" name="x3"
+                                                                 value="#{pointsBean.x[2]}"/>
                                         <div class="state p-success">
                                             <h:outputLabel for="x3">-3</h:outputLabel>
                                         </div>
                                     </div>
 
                                     <div class="pretty p-round p-tada">
-                                        <h:selectBooleanCheckbox styleClass="x-checkbox" id="x4" name="x4" value="#{pointsBean.x[3]}"/>
+                                        <h:selectBooleanCheckbox styleClass="x-checkbox" id="x4" name="x4"
+                                                                 value="#{pointsBean.x[3]}"/>
                                         <div class="state p-success">
                                             <h:outputLabel for="x4">-2</h:outputLabel>
                                         </div>
                                     </div>
 
                                     <div class="pretty p-round p-tada">
-                                        <h:selectBooleanCheckbox styleClass="x-checkbox" id="x5" name="x5" value="#{pointsBean.x[4]}"/>
+                                        <h:selectBooleanCheckbox styleClass="x-checkbox" id="x5" name="x5"
+                                                                 value="#{pointsBean.x[4]}"/>
                                         <div class="state p-success">
                                             <h:outputLabel for="x5">-1</h:outputLabel>
                                         </div>
                                     </div>
 
                                     <div class="pretty p-round p-tada">
-                                        <h:selectBooleanCheckbox styleClass="x-checkbox" id="x6" name="x6" value="#{pointsBean.x[5]}"/>
+                                        <h:selectBooleanCheckbox styleClass="x-checkbox" id="x6" name="x6"
+                                                                 value="#{pointsBean.x[5]}"/>
                                         <div class="state p-success">
                                             <h:outputLabel for="x6">0</h:outputLabel>
                                         </div>
                                     </div>
 
                                     <div class="pretty p-round p-tada">
-                                        <h:selectBooleanCheckbox styleClass="x-checkbox" id="x7" name="x7" value="#{pointsBean.x[6]}"/>
+                                        <h:selectBooleanCheckbox styleClass="x-checkbox" id="x7" name="x7"
+                                                                 value="#{pointsBean.x[6]}"/>
                                         <div class="state p-success">
                                             <h:outputLabel for="x7">1</h:outputLabel>
                                         </div>
@@ -165,8 +172,9 @@
                                 <div class="my-3 col-sm">
                                     <h:commandButton styleClass="btn btn-primary btn-lg clear-table-btn"
                                                      value="Clear table"
-                                                     type="button">
-                                        <f:ajax execute="@form" render="results-table"/>
+                                                     type="button"
+                                                     action="#{pointsBean.clearTable}">
+                                        <f:ajax render="results-table"/>
                                     </h:commandButton>
                                 </div>
                             </div>
@@ -176,7 +184,8 @@
                             <h:inputText styleClass="x-hidden" value="#{pointsBean.xx}"/>
                             <h:inputText styleClass="y-hidden" value="#{pointsBean.yy}"/>
                             <h:inputText styleClass="r-hidden" value="#{pointsBean.rr}"/>
-                            <h:commandButton type="submit" styleClass="hidden-submit-btn" action="#{pointsBean.addPointSuper}"/>
+                            <h:commandButton type="submit" styleClass="hidden-submit-btn"
+                                             action="#{pointsBean.addPointSuper}"/>
                         </h:form>
                     </div>
 
