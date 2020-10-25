@@ -35,7 +35,6 @@ public class PointsBean implements Serializable {
         dbStorage = facesContext.getApplication()
                         .evaluateExpressionGet(facesContext, "#{dao}", DBStorage.class);
         allPoints = dbStorage.getAllPoints();
-        System.out.println(allPoints);
     }
 
     @Getter
@@ -50,7 +49,23 @@ public class PointsBean implements Serializable {
         }
         allPoints.clear();
     }
+    @Getter
+    private double xx, yy, rr;
+    public void addPointSuper(){
+        addPoint(xx, yy, rr);
+    }
 
+    public void addPoint(double x, double y, double r){
+        PointQ currentPoint = new PointQ();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss dd.MM.yyyy");
+        currentPoint.setQueryTime(dateFormat
+                .format(new Date(System.currentTimeMillis())));
+        currentPoint.setX(x);
+        currentPoint.setR(y);
+        currentPoint.setY(r);
+        allPoints.add(currentPoint);
+        dbStorage.addPoint(currentPoint);
+    }
     public void addPointsFromFields() {
         for (int i = 0; i< x.length; i++){
             if(!x[i]) continue;
@@ -58,20 +73,7 @@ public class PointsBean implements Serializable {
             for(int j = 0; j< r.length; j++){
                 if(!r[j]) continue;
 
-                PointQ currentPoint = new PointQ();
-                SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss dd.MM.yyyy");
-                currentPoint.setQueryTime(dateFormat
-                        .format(new Date(System.currentTimeMillis())));
-
-                currentPoint.setX(i-5.0);
-                currentPoint.setR(j+1.0);
-                currentPoint.setY(Double.parseDouble(y));
-                currentPoint.setInArea(InAreaChecker
-                        .isInArea(currentPoint.getX(),
-                                currentPoint.getY(),
-                                currentPoint.getR()));
-                allPoints.add(currentPoint);
-                dbStorage.addPoint(currentPoint);
+                addPoint(i-5.0, j+1.0, Double.parseDouble(y));
             }
         }
     }

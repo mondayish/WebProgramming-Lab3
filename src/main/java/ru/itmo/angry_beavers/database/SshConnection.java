@@ -11,7 +11,7 @@ public class SshConnection implements UrlGetter {
 
         String host = "se.ifmo.ru";
         int port = 2222;
-        //String[] acc = FileUtil.getFromFile("account");
+        /////String[] acc = FileUtil.getFromFile("account");
         String user = "s285574";
         String pass = "oix411";
 

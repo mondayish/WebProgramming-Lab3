@@ -46,24 +46,16 @@ public class DBStorage implements PointsRepository {
     @Override
     public List<PointQ> getAllPoints() {
         Session session = sessionFactory.openSession();
-        System.out.println("getAllPoints: session opens ");
         List<PointQ> res = session.createQuery("from PointQ").list();
-        System.out.println("getAllPoints: created query");
         session.close();
-        System.out.println("getAllPoints: session closed");
         return res;
     }
 
     private void openTransactionFor(Consumer<Session> action) {
         Session session = sessionFactory.openSession();
-        System.out.println("openTransactionFor: session opened");
         Transaction transaction = session.beginTransaction();
-        System.out.println("openTransactionFor: transaction begin");
         action.accept(session);
-        System.out.println("openTransactionFor: consumer did smth");
         transaction.commit();
-        System.out.println("openTransactionFor: transaction commited");
         session.close();
-        System.out.println("openTransactionFor: session closed");
     }
 }
