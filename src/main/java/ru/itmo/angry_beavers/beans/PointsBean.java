@@ -38,7 +38,7 @@ public class PointsBean implements Serializable {
     }
 
     @Getter
-    private String y;
+    private double y;
 
     @Getter
     private List<PointQ> allPoints;
@@ -61,8 +61,8 @@ public class PointsBean implements Serializable {
         currentPoint.setQueryTime(dateFormat
                 .format(new Date(System.currentTimeMillis())));
         currentPoint.setX(x);
-        currentPoint.setR(y);
-        currentPoint.setY(r);
+        currentPoint.setR(r);
+        currentPoint.setY(y);
         allPoints.add(currentPoint);
         dbStorage.addPoint(currentPoint);
     }
@@ -73,7 +73,7 @@ public class PointsBean implements Serializable {
             for(int j = 0; j< r.length; j++){
                 if(!r[j]) continue;
 
-                addPoint(i-5.0, j+1.0, Double.parseDouble(y));
+                addPoint(i-5.0, y, j+1.0);
             }
         }
     }

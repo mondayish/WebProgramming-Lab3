@@ -46,10 +46,12 @@ function deleteAllPointsFromPlot() {
 }
 
 function getRValue() {
-    const rText = $('.r-checkbox-selected + div > label').text();
-    let rValue = parseFloat(rText);
-    if (rText === '') {
-        rValue = DEFAULT_R_VALUE;
+    let rValue = parseFloat($('.r-checkbox-selected + div > label').text());
+    if (isNaN(rValue)) {
+        rValue = parseFloat($("tbody tr").last().find(">:nth-child(3)").text());
+        if (isNaN(rValue)) {
+            rValue = DEFAULT_R_VALUE;
+        }
     }
     return rValue;
 }
@@ -65,6 +67,9 @@ function clickPlotHandler(e) {
         const yValue = fromSvgToRY(y, rValue);
         // todo message about required R
         // todo something to send fields
+        // todo validate x and r
+        // todo hidden form
+
     }
 }
 
@@ -75,8 +80,47 @@ function checkEmptyRow() {
     }
 }
 
+function uncheckCheckboxes() {
+    $("input:checked").prop("checked", false);
+}
+
+function clearForm() {
+    uncheckCheckboxes();
+    $(".r-checkbox-selected").toggleClass("r-checkbox-selected").toggleClass("r-checkbox");
+    $(".y").val("");
+}
+
+function checkOneRequiredX() {
+    const result = $(".x-checkbox:checked").length !== 0;
+    if (result) {
+        $(".invalid-x").addClass("d-none");
+    } else {
+        $(".invalid-x").removeClass("d-none");
+    }
+    return result;
+}
+
+function checkOneRequiredR() {
+    const result = $(".r-checkbox-selected").length !== 0;
+    if (result) {
+        $(".invalid-r").addClass("d-none");
+    } else {
+        $(".invalid-r").removeClass("d-none");
+    }
+    return result;
+}
+
+clearForm();
 checkEmptyRow();
 drawPointsFromTable();
+
+$(".data-form").submit(function (e) {
+    if (!checkOneRequiredX() || !checkOneRequiredR()) {
+        e.preventDefault();
+    }
+});
+
+$(".clear-form-btn").on('click', clearForm);
 
 $(".graphics svg").click(clickPlotHandler);
 
