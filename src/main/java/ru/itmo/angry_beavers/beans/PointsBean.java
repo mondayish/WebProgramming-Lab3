@@ -27,13 +27,13 @@ public class PointsBean implements Serializable {
 
     @Getter
     // 1 2 3 4 5
-    private boolean[] r  = new boolean[5];
+    private boolean[] r = new boolean[5];
 
 
-    public void init(){
+    public void init() {
         FacesContext facesContext = FacesContext.getCurrentInstance();
         dbStorage = facesContext.getApplication()
-                        .evaluateExpressionGet(facesContext, "#{dao}", DBStorage.class);
+                .evaluateExpressionGet(facesContext, "#{dao}", DBStorage.class);
         allPoints = dbStorage.getAllPoints();
     }
 
@@ -43,19 +43,22 @@ public class PointsBean implements Serializable {
     @Getter
     private List<PointQ> allPoints;
 
-    public void clearTable(){
-        for(PointQ p : dbStorage.getAllPoints()){
+    public void clearTable() {
+        for (PointQ p : dbStorage.getAllPoints()) {
             dbStorage.removePoint(p);
         }
         allPoints.clear();
     }
+
     @Getter
     private double xx, yy, rr;
-    public void addPointSuper(){
+
+    public String addPointSuper() {
         addPoint(xx, yy, rr);
+        return "main.xhtml?faces-redirect=true";
     }
 
-    public void addPoint(double x, double y, double r){
+    public void addPoint(double x, double y, double r) {
         PointQ currentPoint = new PointQ();
         SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss dd.MM.yyyy");
         currentPoint.setQueryTime(dateFormat
@@ -67,15 +70,17 @@ public class PointsBean implements Serializable {
         allPoints.add(currentPoint);
         dbStorage.addPoint(currentPoint);
     }
-    public void addPointsFromFields() {
-        for (int i = 0; i< x.length; i++){
-            if(!x[i]) continue;
 
-            for(int j = 0; j< r.length; j++){
-                if(!r[j]) continue;
+    public String addPointsFromFields() {
+        for (int i = 0; i < x.length; i++) {
+            if (!x[i]) continue;
 
-                addPoint(i-5.0, y, j+1.0);
+            for (int j = 0; j < r.length; j++) {
+                if (!r[j]) continue;
+
+                addPoint(i - 5.0, y, j + 1.0);
             }
         }
+        return "main.xhtml?faces-redirect=true";
     }
 }

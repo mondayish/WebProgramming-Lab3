@@ -20,6 +20,7 @@
         <ui:define name="content">
             <f:metadata>
                 <f:event type="preRenderView" listener="#{pointsBean.init}"/>
+                <f:viewParam name="faces-redirect" value="true"/>
             </f:metadata>
 
             <div class="container my-4">
@@ -163,7 +164,8 @@
                                 <div class="my-3 col-sm">
                                     <h:commandButton styleClass="btn btn-primary btn-lg submit-btn" value="Submit"
                                                      type="submit"
-                                                     action="#{pointsBean.addPointsFromFields}"/>
+                                                     action="#{pointsBean.addPointsFromFields}">
+                                    </h:commandButton>
                                 </div>
 
                                 <div class="my-3 col-sm">
