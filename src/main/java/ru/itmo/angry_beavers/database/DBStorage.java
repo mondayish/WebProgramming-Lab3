@@ -19,8 +19,6 @@ public class DBStorage implements PointsRepository {
     private final SessionFactory sessionFactory;
 
     public DBStorage() {
-        //SshConnection connection = new SshConnection();
-        //connection.getUrl();
         Configuration configuration = new Configuration().configure();
         configuration.addAnnotatedClass(PointQ.class);
         ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
