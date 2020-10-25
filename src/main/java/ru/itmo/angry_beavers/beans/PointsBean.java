@@ -1,6 +1,7 @@
 package ru.itmo.angry_beavers.beans;
 
 import lombok.Getter;
+import lombok.Setter;
 import ru.itmo.angry_beavers.database.DBStorage;
 import ru.itmo.angry_beavers.model.PointQ;
 import ru.itmo.angry_beavers.services.InAreaChecker;
@@ -15,6 +16,7 @@ import java.util.List;
 
 @ManagedBean(name = "pointsBean")
 @ApplicationScoped
+@Setter
 public class PointsBean implements Serializable {
 
     @Getter

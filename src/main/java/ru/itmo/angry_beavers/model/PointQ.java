@@ -13,6 +13,13 @@ import javax.persistence.*;
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class PointQ {
 
+    public PointQ(Double x, Double y, Double r, boolean inArea, String queryTime) {
+        this.x = x;
+        this.y = y;
+        this.r = r;
+        this.inArea = inArea;
+        this.queryTime = queryTime;
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
