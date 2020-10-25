@@ -35,6 +35,7 @@ public class PointsBean implements Serializable {
         dbStorage = facesContext.getApplication()
                         .evaluateExpressionGet(facesContext, "#{dao}", DBStorage.class);
         allPoints = dbStorage.getAllPoints();
+        System.out.println(allPoints);
     }
 
     @Getter
