@@ -3,10 +3,6 @@ const CANVAS_HEIGHT = 300;
 const CANVAS_R_VALUE = 120;
 const DEFAULT_R_VALUE = 3;
 
-function anime() {
-    $("tbody").slideToggle("slow");
-}
-
 function fromTableToSvgX(x) {
     return x / getRValue() * CANVAS_R_VALUE + CANVAS_WIDTH / 2;
 }
@@ -23,10 +19,10 @@ function fromSvgToRY(y, r) {
     return r * (CANVAS_HEIGHT / 2 - y) / CANVAS_R_VALUE;
 }
 
-function checkResult(x, y, r){
-    isInCircle = (x, y, r) => x>=0 && y<=0 && r*r/4 >= x*x + y*y;
-    isInTriangle = (x, y, r) => x<=0 && y<=0 && y >= -x/2-r/2;
-    isInRectangle = (x, y, r) => x>=0 && y>=0 && x<=r && y<=r/2;
+function checkResult(x, y, r) {
+    isInCircle = (x, y, r) => x >= 0 && y <= 0 && r * r / 4 >= x * x + y * y;
+    isInTriangle = (x, y, r) => x <= 0 && y <= 0 && y >= -x / 2 - r / 2;
+    isInRectangle = (x, y, r) => x >= 0 && y >= 0 && x <= r && y <= r / 2;
     return isInCircle(x, y, r) || isInTriangle(x, y, r) || isInRectangle(x, y, r);
 }
 
@@ -41,11 +37,11 @@ function drawPointsFromTable() {
 
         const existingContent = plot.html();
         const contentToInsert = `<circle class="point" r="4" cx="${fromTableToSvgX(x)}" cy="${fromTableToSvgY(y)}" fill="${color}"></circle>`;
-        plot.html(existingContent+contentToInsert);
+        plot.html(existingContent + contentToInsert);
     });
 }
 
-function deleteAllPointsFromPlot(){
+function deleteAllPointsFromPlot() {
     $(".point").remove();
 }
 
@@ -64,7 +60,7 @@ function clickPlotHandler(e) {
     const y = e.pageY - offset.top;
     const rValue = getRValue();
 
-    if(rValue!==null) {
+    if (rValue !== null) {
         const xValue = fromSvgToRX(x, rValue);
         const yValue = fromSvgToRY(y, rValue);
         // todo message about required R
@@ -72,9 +68,14 @@ function clickPlotHandler(e) {
     }
 }
 
+function checkEmptyRow() {
+    const firstRow = $("tbody tr").first();
+    if ($("tbody tr").first().html() === "<td></td><td></td><td></td><td></td><td></td>") {
+        firstRow.remove();
+    }
+}
 
-
-
+checkEmptyRow();
 drawPointsFromTable();
 
 $(".graphics svg").click(clickPlotHandler);
@@ -88,5 +89,3 @@ $(".r-checkbox").click(function () {
     deleteAllPointsFromPlot();
     drawPointsFromTable();
 });
-
-$("thead").click(anime);

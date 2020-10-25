@@ -18,9 +18,9 @@
         </ui:define>
 
         <ui:define name="content">
-<!--            <f:metadata>-->
-<!--                <f:event type="preRenderView" listener="#{pointsBean.init}"/>-->
-<!--            </f:metadata>-->
+            <f:metadata>
+                <f:event type="preRenderView" listener="#{pointsBean.init}"/>
+            </f:metadata>
 
             <div class="container my-4">
                 <div class="row w-100">
@@ -167,7 +167,7 @@
 
                 <div class="text-center my-3">
                     <div class="h4 mb-3">Results</div>
-                    <h:dataTable styleClass="table table-bordered" value="#{pointsBean.pointQS}" var="point">
+                    <h:dataTable styleClass="table table-bordered" value="#{pointsBean.allPoints}" var="point">
                         <h:column>
                             <f:facet name="header">X</f:facet>
                             #{point.x}
