@@ -1,6 +1,7 @@
 package ru.itmo.angry_beavers.beans;
 
 import lombok.Getter;
+import lombok.Setter;
 import ru.itmo.angry_beavers.database.DBStorage;
 import ru.itmo.angry_beavers.model.PointQ;
 import ru.itmo.angry_beavers.services.InAreaChecker;
@@ -15,6 +16,7 @@ import java.util.List;
 
 @ManagedBean(name = "pointsBean")
 @ApplicationScoped
+@Setter
 public class PointsBean implements Serializable {
 
     @Getter
@@ -45,9 +47,10 @@ public class PointsBean implements Serializable {
         for(PointQ p : dbStorage.getAllPoints()){
             dbStorage.removePoint(p);
         }
+        allPoints.clear();
     }
 
-    public void AddPointsFromFields() {
+    public void addPointsFromFields() {
         for (int i = 0; i< x.length; i++){
             if(!x[i]) continue;
 
@@ -58,12 +61,14 @@ public class PointsBean implements Serializable {
                 SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss dd.MM.yyyy");
                 currentPoint.setQueryTime(dateFormat
                         .format(new Date(System.currentTimeMillis())));
+
+                currentPoint.setX(i-5.0);
+                currentPoint.setR(j+1.0);
+                currentPoint.setY(Double.parseDouble(y));
                 currentPoint.setInArea(InAreaChecker
                         .isInArea(currentPoint.getX(),
                                 currentPoint.getY(),
                                 currentPoint.getR()));
-                currentPoint.setX(i-5.0);
-                currentPoint.setR(j+1.0);
                 allPoints.add(currentPoint);
                 dbStorage.addPoint(currentPoint);
             }
