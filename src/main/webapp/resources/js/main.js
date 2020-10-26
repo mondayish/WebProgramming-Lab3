@@ -46,23 +46,11 @@ function checkOneRequiredR() {
     return result;
 }
 
-function checkYInput() {
-    const yValue = $(".y").val().replace(",", ".");
-    $(".y").val(yValue);
-    const result = /^(-?\d+)(\.\d+)?$/.test(yValue);
-    if (result) {
-        $(".invalid-y").addClass("d-none");
-    } else {
-        $(".invalid-y").removeClass("d-none");
-    }
-    return result;
-}
-
 clearForm();
 drawPointsFromTable();
 
 $(".data-form").submit(function (e) {
-    if (!checkOneRequiredX() || !checkYInput() || !checkOneRequiredR()) {
+    if (!checkOneRequiredX() || !checkOneRequiredR()) {
         e.preventDefault();
     }
 });

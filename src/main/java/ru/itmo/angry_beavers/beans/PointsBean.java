@@ -57,7 +57,7 @@ public class PointsBean implements Serializable {
 
     public String addPointSuper() {
         addPoint(xx, yy, rr);
-        return "main.xhtml?faces-redirect=true";
+        return "main?faces-redirect=true";
     }
 
     public void addPoint(double x, double y, double r) {
