@@ -9,7 +9,6 @@ import ru.itmo.angry_beavers.services.InAreaChecker;
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
-import javax.faces.context.FacesContext;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -33,9 +32,6 @@ public class PointsBean implements Serializable {
 
 
     public void init() {
-/*        FacesContext facesContext = FacesContext.getCurrentInstance();
-        dbStorage = facesContext.getApplication()
-                .evaluateExpressionGet(facesContext, "#{dao}", DBStorage.class);*/
         allPoints = dbStorage.getAllPoints();
     }
 
@@ -83,6 +79,6 @@ public class PointsBean implements Serializable {
                 addPoint(i - 5.0, y, j + 1.0);
             }
         }
-        return "main.xhtml?faces-redirect=true";
+        return "main?faces-redirect=true";
     }
 }
