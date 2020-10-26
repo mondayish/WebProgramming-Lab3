@@ -8,6 +8,7 @@ import ru.itmo.angry_beavers.services.InAreaChecker;
 
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.context.FacesContext;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
@@ -23,6 +24,7 @@ public class PointsBean implements Serializable {
     // -5 -4 -3 -2 -1 0 1
     private boolean[] x = new boolean[7];
 
+    @ManagedProperty("#{dao}")
     private DBStorage dbStorage;
 
     @Getter
@@ -31,9 +33,9 @@ public class PointsBean implements Serializable {
 
 
     public void init() {
-        FacesContext facesContext = FacesContext.getCurrentInstance();
+/*        FacesContext facesContext = FacesContext.getCurrentInstance();
         dbStorage = facesContext.getApplication()
-                .evaluateExpressionGet(facesContext, "#{dao}", DBStorage.class);
+                .evaluateExpressionGet(facesContext, "#{dao}", DBStorage.class);*/
         allPoints = dbStorage.getAllPoints();
     }
 

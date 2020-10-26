@@ -21,10 +21,4 @@
             <to-view-id>/index.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
-
-    <!--<managed-bean>
-        <managed-bean-name>resultsBean</managed-bean-name>
-        <managed-bean-class>ru.itmo.angry_beavers.beans.?</managed-bean-class>
-        <managed-bean-scope>session</managed-bean-scope>
-    </managed-bean>-->
 </faces-config>

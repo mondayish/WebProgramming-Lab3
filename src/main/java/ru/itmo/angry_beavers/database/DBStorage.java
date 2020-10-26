@@ -8,12 +8,13 @@ import ru.itmo.angry_beavers.model.PointQ;
 
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
+import java.io.Serializable;
 import java.util.List;
 import java.util.function.Consumer;
 
 @ManagedBean(name = "dao")
 @ApplicationScoped
-public class DBStorage implements PointsRepository {
+public class DBStorage implements PointsRepository, Serializable {
 
 
     private final SessionFactory sessionFactory;
